@@ -18,6 +18,7 @@ function init() {
 	width = canvas.getAttribute("width");
 	height = canvas.getAttribute("height");
 	ctx = canvas.getContext('2d');
+	speedInput = document.getElementById('speedInput');
 	
 	//Mutables
 	circlePointAngle = 0;
@@ -431,7 +432,8 @@ function draw() {
 	//Created by text
 	ctx.fillText("Created by Robert D. Rioja", 5, height - 10);
 	
-	circlePointAngle += 1.5;
+	//Control animation speed as a function of FPS and speed input
+	circlePointAngle += (frameTime / Math.abs(speedInput.value));
 	
 	//FPS
 	var thisFrameTime = (thisLoop = new Date) - lastLoop;
